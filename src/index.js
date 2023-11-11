@@ -45,19 +45,19 @@ function renderCards(hits) {
 
     const cardMarkup = hits.map(card =>`
     <div class="photo-card">
-  <img src="${card.pageURL}" alt="${card.tags}" loading="lazy" />
+  <img src="${card.previewURL}" alt="${card.tags}" loading="lazy" />
   <div class="info">
     <p class="info-item">
-      <b>${card.likes}</b>
+      <b>Likes ${card.likes}</b>
     </p>
     <p class="info-item">
-      <b>${card.views}</b>
+      <b>Views ${card.views}</b>
     </p>
     <p class="info-item">
-      <b>${card.comments}</b>
+      <b>Comments ${card.comments}</b>
     </p>
     <p class="info-item">
-      <b>${card.downloads}s</b>
+      <b>Downloads ${card.downloads}</b>
     </p>
   </div>
 </div>
