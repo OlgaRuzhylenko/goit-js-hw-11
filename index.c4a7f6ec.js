@@ -1,2 +1,0 @@
-!function(){var e=document.querySelector(".search-form"),t=document.querySelector("input");document.querySelector("button");fetch("https://pixabay.com/api/?key=".concat("40611868-10084cd142e7b08f59941726f","&q=").concat("yellow+flower","&image_type=").concat("photo","&orientation=").concat("horizontal","&safesearch=").concat(!0)).then((function(e){return e.json()})).then((function(e){return console.log(e),e})).catch((function(e){console.log("error")})),e.addEventListener("submit",(function(e){e.preventDefault();t.value}))}();
-//# sourceMappingURL=index.c4a7f6ec.js.map
