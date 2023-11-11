@@ -1,5 +1,6 @@
 import axios from 'axios';
 // import { fetchAllPictures } from './api';
+import Notiflix from 'notiflix';
 
 const form = document.querySelector('.search-form');
 const input = document.querySelector('input');
