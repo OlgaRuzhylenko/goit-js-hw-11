@@ -1,9 +1,17 @@
 import axios from 'axios';
 import { fetchAllPictures } from './api';
+import {q} from './api'
 
 const form = document.querySelector('.search-form');
 const input = document.querySelector('input');
 const btn = document.querySelector("button");
+
+//додаємо слухача на форму
+form.addEventListener("submit", onFormSubmit) ;
+function onFormSubmit(evt) {
+    evt.preventDefault();
+
+    q = input.value;
 
 // /запит на pixabay.com. Вивівся масив об'єктів
 fetchAllPictures()
@@ -13,13 +21,4 @@ fetchAllPictures()
 }).catch(error => {
     console.log("error");
 })
-
-
-//додаємо слухача на форму
-form.addEventListener("submit", onFormSubmit) ;
-function onFormSubmit(evt) {
-    evt.preventDefault();
-
-    const searchWord = input.value;
-
 }
