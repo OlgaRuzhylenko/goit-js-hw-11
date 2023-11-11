@@ -1,2 +1,0 @@
-!function(){document.querySelector(".search-form"),document.querySelector("input"),document.querySelector("button");fetch("https://pixabay.com/api/?key=".concat("40611868-10084cd142e7b08f59941726f","&q=").concat("yellow+flower","&image_type=").concat("photo")).then((function(o){return o.json()})).then((function(o){return console.log(o),o})).catch((function(o){console.log("error")}))}();
-//# sourceMappingURL=index.618120a5.js.map
