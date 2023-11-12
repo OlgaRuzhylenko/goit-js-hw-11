@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import { fetchAllPictures } from './api';
 import Notiflix from 'notiflix';
 import 'notiflix/dist/notiflix-3.2.6.min.css';
 
@@ -23,10 +22,9 @@ const amountPerPage = 10;
 let totalPage = 1;
 
 function fetchAllPictures() {
- 
-  return fetch(
+  return axios.get(
     `https://pixabay.com/api/?key=${key}&q=${q}&image_type=${imageType}&orientation=${imageOrientation}&safesearch=${safesearch}&page=${page}&per_page=${amountPerPage}`
-  ).then(response => response.json());
+  ).then(response => response.data);
 }
 
 //додаємо слухача на форму
