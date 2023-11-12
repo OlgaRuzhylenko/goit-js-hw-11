@@ -1,6 +1,7 @@
 import axios from 'axios';
 // import { fetchAllPictures } from './api';
 import Notiflix from 'notiflix';
+import 'notiflix/dist/notiflix-3.2.6.min.css';
 
 const form = document.querySelector('.search-form');
 const input = document.querySelector('input');
@@ -34,7 +35,13 @@ fetchAllPictures()
         // return data;
         renderCards(data.hits);
     } else {
-        console.log('Sorry, there are no images matching your search query. Please try again.');
+      Notiflix.Notify.failure(
+        'Sorry, there are no images matching your search query. Please try again.',
+        function cb() {
+          // callback
+        },
+      );
+       
     }
    }).catch(error => {
     console.log("error");
