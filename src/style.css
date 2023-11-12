@@ -1,0 +1,49 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+.gallery {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+}
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+body {
+    background-color: #C0C0C0;
+    margin-top: 5px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.input-style {
+    border-top: transparent;
+    border-right: transparent;
+    border-left: transparent;
+    border-bottom: 1px solid gray;
+    border-radius: 4px;
+    
+}
+.search-form {
+    display: flex;
+justify-content: center;
+font-family: 'Lato', sans-serif;
+}
+.searchBt-style {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #2F4F4F;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.load-more {
+
+}
