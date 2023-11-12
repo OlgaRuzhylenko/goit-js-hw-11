@@ -17,11 +17,11 @@ const imageType = 'photo';
 const imageOrientation = 'horizontal';
 const safesearch = true;
 let page = 1;
-const amountPerPage = 40;
+const amountPerPage = 10;
 let totalPage = 1;
 
-export function fetchAllPictures(){
-  page = 1;
+function fetchAllPictures(){
+  // page = 1;
 return fetch(`https://pixabay.com/api/?key=${key}&q=${q}&image_type=${imageType}&orientation=${imageOrientation}&safesearch=${safesearch}&page=${page}&per_page=${amountPerPage}`)
 .then(response => response.json())
 }
@@ -82,8 +82,7 @@ function renderCards(hits) {
 //завантаження по load more
 loadBtn.addEventListener('click', onLoadMoreClick);
 function onLoadMoreClick(evt){
-page+=1;
-
+page += 1;
 
   fetchAllPictures()
   .then(data => {
@@ -99,7 +98,8 @@ page+=1;
       }
      }).catch(error => {
       console.log("error");
-  })
+  });
+  checkLoadBtnStatus()
 }
 function checkLoadBtnStatus(){
  if (page >= totalPage) {
