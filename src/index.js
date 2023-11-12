@@ -1,6 +1,9 @@
 import axios from 'axios';
 import Notiflix from 'notiflix';
 import 'notiflix/dist/notiflix-3.2.6.min.css';
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
+
 
 const form = document.querySelector('.search-form');
 const input = document.querySelector('input');
@@ -74,7 +77,9 @@ function renderCards(hits) {
     .map(
       card => `
     <div class="photo-card">
-  <img src="${card.previewURL}" alt="${card.tags}" loading="lazy" />
+    <a href="${card.largeImageURL}" class="gallery__link">
+    <img src="${card.previewURL}" alt="${card.tags}" loading="lazy" />
+    </a>
   <div class="info">
     <p class="info-item">
       <b>Likes ${card.likes}</b>
@@ -89,12 +94,18 @@ function renderCards(hits) {
       <b>Downloads ${card.downloads}</b>
     </p>
   </div>
-</div>
+   
+  </div>
     `
     )
     .join('');
 
   container.insertAdjacentHTML('beforeend', cardMarkup);
+
+  const lightbox = new SimpleLightbox('.gallery a', { 
+    captionsData: 'alt',
+    captionDelay: 250,
+})
   loadBtn.removeAttribute('disabled', 'true');
 }
 //завантаження по load more
