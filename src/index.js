@@ -5,8 +5,10 @@ import 'notiflix/dist/notiflix-3.2.6.min.css';
 
 const form = document.querySelector('.search-form');
 const input = document.querySelector('input');
-const btn = document.querySelector("button");
-const container = document.querySelector('.gallery')
+const searchBtn = document.querySelector("button");
+const container = document.querySelector('.gallery');
+const loadBtn = document.querySelector('.load-more');
+loadBtn.setAttribute('disabled', 'true');
 
 //змінні для запиту на сервер
 const key = "40611868-10084cd142e7b08f59941726f";
@@ -14,9 +16,10 @@ let q = "cat";
 const imageType = 'photo';
 const imageOrientation = 'horizontal';
 const safesearch = true;
+const amountPerPage = 40;
 
 export function fetchAllPictures(){
-return fetch(`https://pixabay.com/api/?key=${key}&q=${q}&image_type=${imageType}&orientation=${imageOrientation}&safesearch=${safesearch}`)
+return fetch(`https://pixabay.com/api/?key=${key}&q=${q}&image_type=${imageType}&orientation=${imageOrientation}&safesearch=${safesearch}&per_page=${amountPerPage}`)
 .then(response => response.json())
 }
 
@@ -32,16 +35,13 @@ fetchAllPictures()
 .then(data => {
     if (data.hits && data.hits.length > 0){
         console.log(data);
-        // return data;
         renderCards(data.hits);
     } else {
       Notiflix.Notify.failure(
-        'Sorry, there are no images matching your search query. Please try again.',
-        function cb() {
-          // callback
-        },
-      );
-       
+        'Sorry, there are no images matching your search query. Please try again.',  {
+    timeout: 6000,
+  },
+        function cb() { });       
     }
    }).catch(error => {
     console.log("error");
@@ -72,4 +72,5 @@ function renderCards(hits) {
     `).join('');
 
     container.insertAdjacentHTML("beforeend", cardMarkup);
+    loadBtn.removeAttribute('disabled', 'true');
 }
