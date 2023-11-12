@@ -16,10 +16,11 @@ let q = "cat";
 const imageType = 'photo';
 const imageOrientation = 'horizontal';
 const safesearch = true;
+let page = 1;
 const amountPerPage = 40;
 
 export function fetchAllPictures(){
-return fetch(`https://pixabay.com/api/?key=${key}&q=${q}&image_type=${imageType}&orientation=${imageOrientation}&safesearch=${safesearch}&per_page=${amountPerPage}`)
+return fetch(`https://pixabay.com/api/?key=${key}&q=${q}&image_type=${imageType}&orientation=${imageOrientation}&safesearch=${safesearch}&page=${page}&per_page=${amountPerPage}`)
 .then(response => response.json())
 }
 
@@ -73,4 +74,23 @@ function renderCards(hits) {
 
     container.insertAdjacentHTML("beforeend", cardMarkup);
     loadBtn.removeAttribute('disabled', 'true');
+}
+loadBtn.addEventListener('click', onLoadMoreClick);
+function onLoadMoreClick(evt){
+page+=1;
+  fetchAllPictures()
+  .then(data => {
+      if (data.hits && data.hits.length > 0){
+          console.log(data);
+          renderCards(data.hits);
+      } else {
+        Notiflix.Notify.failure(
+          'Sorry, there are no images matching your search query. Please try again.',  {
+      timeout: 6000,
+    },
+          function cb() { });       
+      }
+     }).catch(error => {
+      console.log("error");
+  })
 }
