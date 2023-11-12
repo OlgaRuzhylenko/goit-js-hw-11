@@ -8,6 +8,7 @@ const searchBtn = document.querySelector('button');
 const container = document.querySelector('.gallery');
 const loadBtn = document.querySelector('.load-more');
 loadBtn.setAttribute('disabled', 'true');
+loadBtn.classList.add('hide');
 input.classList.add('input-style');
 searchBtn.classList.add('searchBt-style');
 
@@ -18,13 +19,14 @@ const imageType = 'photo';
 const imageOrientation = 'horizontal';
 const safesearch = true;
 let page = 1;
-const amountPerPage = 10;
+const amountPerPage = 40;
 let totalPage = 1;
 
 function fetchAllPictures() {
   return axios.get(
     `https://pixabay.com/api/?key=${key}&q=${q}&image_type=${imageType}&orientation=${imageOrientation}&safesearch=${safesearch}&page=${page}&per_page=${amountPerPage}`
   ).then(response => response.data);
+
 }
 
 //додаємо слухача на форму
@@ -40,6 +42,14 @@ function onFormSubmit(evt) {
       if (data.hits && data.hits.length > 0) {
         console.log(data);
         renderCards(data.hits);
+        loadBtn.classList.remove('hide');
+        Notiflix.Notify.success(
+          `Hooray! We found ${data.total} images.`,
+          {
+            timeout: 6000,
+          },
+          function cb() {}
+        );
       } else {
         Notiflix.Notify.failure(
           'Sorry, there are no images matching your search query. Please try again.',
