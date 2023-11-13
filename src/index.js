@@ -25,11 +25,16 @@ let page = 1;
 const amountPerPage = 40;
 let totalPage = 1;
 
-function fetchAllPictures() {
-  return axios.get(
+async function fetchAllPictures()  {
+  try {
+    const response = await axios.get(
     `https://pixabay.com/api/?key=${key}&q=${q}&image_type=${imageType}&orientation=${imageOrientation}&safesearch=${safesearch}&page=${page}&per_page=${amountPerPage}`
-  ).then(response => response.data);
-
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching pictures:", error);
+    throw error;
+  }
 }
 
 //додаємо слухача на форму
