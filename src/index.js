@@ -26,6 +26,7 @@ const amountPerPage = 40;
 let totalPage = 1;
 
 async function fetchAllPictures()  {
+  
   try {
     const response = await axios.get(
     `https://pixabay.com/api/?key=${key}&q=${q}&image_type=${imageType}&orientation=${imageOrientation}&safesearch=${safesearch}&page=${page}&per_page=${amountPerPage}`
@@ -44,11 +45,13 @@ function onFormSubmit(evt) {
 
   q = input.value;
   page = 1;
+
+  container.innerHTML = '';
   //запит на pixabay.com. Вивівся масив об'єктів
   fetchAllPictures()
     .then(data => {
-      container.innerHTML = '';
       
+
       if (data.hits && data.hits.length > 0) {
         console.log(data);
         renderCards(data.hits);
