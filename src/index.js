@@ -47,6 +47,8 @@ function onFormSubmit(evt) {
   //запит на pixabay.com. Вивівся масив об'єктів
   fetchAllPictures()
     .then(data => {
+      container.innerHTML = '';
+      
       if (data.hits && data.hits.length > 0) {
         console.log(data);
         renderCards(data.hits);
@@ -81,6 +83,7 @@ const lightbox = new SimpleLightbox('.gallery a', {
 })
 
 function renderCards(hits) {
+  
 
   const cardMarkup = hits
     .map(
