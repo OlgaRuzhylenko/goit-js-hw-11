@@ -144,6 +144,6 @@ function onLoadMoreClick(evt) {
 }
 function checkLoadBtnStatus() {
   if (page >= totalPage) {
-    loadBtn.setAttribute('disabled', 'true');
+    loadBtn.style.display = 'none';
   }
 }
