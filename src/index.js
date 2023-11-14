@@ -75,6 +75,11 @@ function onFormSubmit(evt) {
     });
 }
 
+const lightbox = new SimpleLightbox('.gallery a', { 
+  captionsData: 'alt',
+  captionDelay: 250,
+})
+
 function renderCards(hits) {
   container.innerHTML = '';
 
@@ -107,10 +112,9 @@ function renderCards(hits) {
 
   container.insertAdjacentHTML('beforeend', cardMarkup);
 
-  const lightbox = new SimpleLightbox('.gallery a', { 
-    captionsData: 'alt',
-    captionDelay: 250,
-})
+  
+  lightbox.refresh()
+
   loadBtn.removeAttribute('disabled', 'true');
 }
 //завантаження по load more
