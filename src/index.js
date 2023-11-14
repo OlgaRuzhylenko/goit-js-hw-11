@@ -81,7 +81,6 @@ const lightbox = new SimpleLightbox('.gallery a', {
 })
 
 function renderCards(hits) {
-  container.innerHTML = '';
 
   const cardMarkup = hits
     .map(
