@@ -14,7 +14,7 @@
   <body>
     <!-- ❗️❗️❗️ Add partials like so for every page -->
     <!-- <include src="./partials/example.html"></include> -->
-    <form class="search-form" id="search-form">
+    <!-- <form class="search-form" id="search-form">
       <input
         type="text"
         name="searchQuery"
@@ -22,10 +22,34 @@
         placeholder="Search images..."
       />
       <button type="submit">Search</button>
-    </form>
-    <div class="gallery">
+    </form> -->
+    <!-- <div class="gallery"> -->
       <!-- Картки зображень -->
+    <!-- </div>
+    <button type="button" class="load-more">Load more</button> -->
+    <div class="your-order">
+      <p class="order-text">Your Order</p>
+      <div class="order-prise">
+        <p class="order-total">Total</p>
+        <p class="orser-sum">Sum:</p>
+        <p class="order-prise-total">$12,94</p>
+      </div>
+      <div class="order-form">
+        <form id="subscription-form">
+          <label for="email"></label>
+          <input
+            class="order-input"
+            type="email"
+            id="email"
+            name="email"
+            required
+            placeholder=" Enter your email"
+          /><span class="form-span">Mail:</span>
+          <button class="order-btn" type="submit">Checkout</button>
+        </form>
+      </div>
+      
     </div>
-    <button type="button" class="load-more">Load more</button>
+    
   </body>
 </html>
